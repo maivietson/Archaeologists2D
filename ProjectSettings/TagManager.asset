@@ -21,7 +21,7 @@ TagManager:
   - Hazards
   - Interactables
   - FireObtacles
-  - 
+  - MainMenu
   - 
   - 
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: Hazards
     uniqueID: 2967044025
+    locked: 0
+  - name: MainMenu
+    uniqueID: 1602656845
     locked: 0
   - name: Player
     uniqueID: 1456725113

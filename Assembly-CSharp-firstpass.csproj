@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4D2C972E-C41B-38B6-2131-9B194D46D139}</ProjectGuid>
+    <ProjectGuid>{882B435B-4284-EC51-8674-3D5682F76E8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -138,37 +138,37 @@
     <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>H:/Complete2D/Archaeologists/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>H:/Complete2D/Archaeologists2D/Archaeologists2D/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>H:/UnityInstall/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
