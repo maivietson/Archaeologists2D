@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] float climbSpeed = 5.0f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
+    // Panel Option
+    // [SerializeField] GameObject panelOptions;
+
     // Cached component references
     Animator myAnimator;
     Rigidbody2D myRigibody;
@@ -91,6 +94,7 @@ public class Player : MonoBehaviour
             isAlive = false;
             myAnimator.SetTrigger("Dying");
             GetComponent<Rigidbody2D>().velocity = deathKick;
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
     }
 
@@ -98,8 +102,8 @@ public class Player : MonoBehaviour
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigibody.velocity.x) > Mathf.Epsilon;
         {
-            print("myRigibody.velocity.x: " + myRigibody.velocity.x);
-            print("Epsilon: " + Mathf.Epsilon);
+            //print("myRigibody.velocity.x: " + myRigibody.velocity.x);
+            //print("Epsilon: " + Mathf.Epsilon);
             // reverse tbe current scalling of x exis
             if(playerHasHorizontalSpeed)
             {
