@@ -213,7 +213,7 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: -16}
-        - {x: -10, y: 10}
+        - {x: -13, y: 14}
         - {x: 16, y: 16}
         - {x: 16, y: -16}
       tessellationDetail: 0
