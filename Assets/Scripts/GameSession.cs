@@ -54,6 +54,7 @@ public class GameSession : MonoBehaviour
     private void ResetGameSession()
     {
         SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 
     private void TakeLife()

@@ -24,13 +24,15 @@ public class ScenePersist : MonoBehaviour
     void Start()
     {
         startingSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        print("startingSceneIndex: " + startingSceneIndex);
     }
 
     // Update is called once per frame
     void Update()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if(currentSceneIndex != startingSceneIndex)
+        print("currentSceneIndex: " + currentSceneIndex);
+        if (currentSceneIndex != startingSceneIndex)
         {
             Destroy(gameObject);
         }
