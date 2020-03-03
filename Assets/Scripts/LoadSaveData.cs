@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -43,7 +44,7 @@ public class LoadSaveData : MonoBehaviour
     {
         //List<Transform> placesObjects = transform.GetComponentsInChildren<Transform>().ToList();
         List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
-        placesObjects.Remove(transform);
+        placesObjects.RemoveAt(0);
 
         LevelData data = new LevelData();
 
@@ -83,14 +84,16 @@ public class LoadSaveData : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + "/" + fileName, FileMode.Open);
             LevelData save = (LevelData)bf.Deserialize(file);
             file.Close();
-
+            
             //handle data
-            foreach(CropData data in save.cropData)
+            foreach (CropData data in save.cropData)
             {
                 print("Name: " + data.itemScriptableObject);
                 print("Position: " + data.transformData.x + ", " + data.transformData.y);
-                //GameObject instanceCoin = Instantiate(Resources.Load("Prefabs/Coin"), new Vector3(data.transformData.x, data.transformData.y, 0f), Quaternion.identity) as GameObject;
-                //instanceCoin.transform.SetParent(target.transform);
+                GameObject coin = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Coin.prefab", typeof(GameObject)) as GameObject;
+                GameObject instanceCoin = Instantiate(coin, new Vector3(data.transformData.x, data.transformData.y, 0f), Quaternion.identity) as GameObject;
+                instanceCoin.name = "Coin";
+                instanceCoin.transform.SetParent(target.transform);
             }
         }
         else
