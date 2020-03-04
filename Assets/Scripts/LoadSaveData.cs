@@ -10,7 +10,19 @@ using UnityEngine.SceneManagement;
 public class LoadSaveData : MonoBehaviour
 {
     int currentSceneIndex;
+    bool firstLoad = true;
+
     GameObject target;
+
+    private static LoadSaveData instance = null;
+
+    public static LoadSaveData Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
 
     private void wake()
     {
@@ -23,6 +35,11 @@ public class LoadSaveData : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
+
+        if(instance == null)
+        {
+            instance = this;
+        }
     }
 
     // Start is called before the first frame update
@@ -31,7 +48,6 @@ public class LoadSaveData : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         target = GameObject.Find("Pickups");
         //SaveGame();
-        LoadGame();
     }
 
     // Update is called once per frame
@@ -67,16 +83,29 @@ public class LoadSaveData : MonoBehaviour
 
         // binary data
         BinaryFormatter bf = new BinaryFormatter();
-        string fileName = "level" + currentSceneIndex + ".save";
+        string fileName = "level" + currentSceneIndex + "_played.save";
         FileStream file = File.Create(Application.persistentDataPath + "/" + fileName);
         bf.Serialize(file, save);
         file.Close();
     }
 
-    public void LoadGame()
+    public void LoadScene(bool firstTime)
+    {
+        if(firstTime)
+        {
+            string fileName = "level" + currentSceneIndex + ".save";
+            LoadDataGame(fileName);
+        }
+        else
+        {
+            string fileName = "level" + currentSceneIndex + "_played.save";
+            LoadDataGame(fileName);
+        }
+    }
+
+    public void LoadDataGame(string fileName)
     {
         // handle file
-        string fileName = "level" + currentSceneIndex + ".save";
         if (File.Exists(Application.persistentDataPath + "/" + fileName))
         {
             //read file
@@ -88,6 +117,10 @@ public class LoadSaveData : MonoBehaviour
             //handle data
             foreach (CropData data in save.cropData)
             {
+                if(data.itemScriptableObject.Contains("Pickups"))
+                {
+                    continue;
+                }
                 print("Name: " + data.itemScriptableObject);
                 print("Position: " + data.transformData.x + ", " + data.transformData.y);
                 GameObject coin = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Coin.prefab", typeof(GameObject)) as GameObject;
@@ -100,5 +133,10 @@ public class LoadSaveData : MonoBehaviour
         {
             Debug.Log("No game saved!");
         }
+    }
+
+    public void SetStateData(bool value)
+    {
+        firstLoad = value;
     }
 }

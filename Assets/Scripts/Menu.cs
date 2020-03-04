@@ -8,5 +8,6 @@ public class Menu : MonoBehaviour
     public void LoadFirstLevel()
     {
         SceneManager.LoadScene(1);
+        LoadSaveData.Instance.SetStateData(true);
     }
 }
