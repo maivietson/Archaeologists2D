@@ -41,11 +41,11 @@ public class LoadSaveData : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         target = GameObject.Find("Pickups");
-        //SaveGame();
-        if(GameSession.instance.IsLoadData())
-        {
-            LoadScene(firstLoad);
-        }
+        PrepareSave();
+        //if (GameSession.instance.IsLoadData())
+        //{
+        //    LoadScene(firstLoad);
+        //}
     }
 
     // Update is called once per frame
@@ -56,7 +56,6 @@ public class LoadSaveData : MonoBehaviour
 
     private LevelData CreateSaveGameObject()
     {
-        //List<Transform> placesObjects = transform.GetComponentsInChildren<Transform>().ToList();
         List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
         placesObjects.RemoveAt(0);
 
@@ -88,8 +87,38 @@ public class LoadSaveData : MonoBehaviour
         // binary data
         BinaryFormatter bf = new BinaryFormatter();
         string fileName = "level" + currentSceneIndex + "_played.save";
-        FileStream file = File.Create(Application.persistentDataPath + "/" + fileName);
+        string filePath = "Assets/DataGame/" + fileName;
+        FileStream file = File.Create(filePath);
         bf.Serialize(file, save);
+        file.Close();
+    }
+
+    public void PrepareSave()
+    {
+        List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
+        placesObjects.RemoveAt(0);
+
+        LevelData data = new LevelData();
+
+        foreach (Transform t in placesObjects)
+        {
+            if(t.name.Contains("ListPickups"))
+            {
+                continue;
+            }
+            CropData cropData = new CropData();
+            cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y);
+            cropData.itemScriptableObject = t.name;
+            print("Name of object: " + t.name);
+            data.cropData.Add(cropData);
+        }
+
+        // binary data
+        BinaryFormatter bf = new BinaryFormatter();
+        string fileName = "level" + currentSceneIndex + ".save";
+        string filePath = "Assets/DataGame/" + fileName;
+        FileStream file = File.Create(filePath);
+        bf.Serialize(file, data);
         file.Close();
     }
 
@@ -109,12 +138,13 @@ public class LoadSaveData : MonoBehaviour
 
     public void LoadDataGame(string fileName)
     {
+        string filePath = "Assets/DataGame/" + fileName;
         // handle file
-        if (File.Exists(Application.persistentDataPath + "/" + fileName))
+        if (File.Exists(filePath))
         {
             //read file
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/" + fileName, FileMode.Open);
+            FileStream file = File.Open(filePath, FileMode.Open);
             LevelData save = (LevelData)bf.Deserialize(file);
             file.Close();
             
