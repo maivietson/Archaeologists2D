@@ -10,19 +10,13 @@ using UnityEngine.SceneManagement;
 public class LoadSaveData : MonoBehaviour
 {
     int currentSceneIndex;
-    bool firstLoad = true;
 
-    GameObject target;
+    // state
+    [SerializeField] bool firstLoad = true;
 
-    private static LoadSaveData instance = null;
+    [SerializeField] GameObject target;
 
-    public static LoadSaveData Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
+    public static LoadSaveData instance = null;
 
     private void wake()
     {
@@ -48,6 +42,10 @@ public class LoadSaveData : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         target = GameObject.Find("Pickups");
         //SaveGame();
+        if(GameSession.instance.IsLoadData())
+        {
+            LoadScene(firstLoad);
+        }
     }
 
     // Update is called once per frame
@@ -72,6 +70,12 @@ public class LoadSaveData : MonoBehaviour
             print("Name of object: " + t.name);
             data.cropData.Add(cropData);
         }
+
+        Transform portExit = GameObject.Find("Level Exit").transform;
+        CropData playerInfo = new CropData();
+        playerInfo.transformData = new TransformData(portExit.localPosition.x, portExit.localPosition.y - 0.2f);
+        playerInfo.itemScriptableObject = "Player";
+        data.cropData.Add(playerInfo);
 
         return data;
     }
@@ -121,12 +125,16 @@ public class LoadSaveData : MonoBehaviour
                 {
                     continue;
                 }
-                print("Name: " + data.itemScriptableObject);
-                print("Position: " + data.transformData.x + ", " + data.transformData.y);
-                GameObject coin = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Coin.prefab", typeof(GameObject)) as GameObject;
+                //print("Name: " + data.itemScriptableObject);
+                //print("Position: " + data.transformData.x + ", " + data.transformData.y);
+                string prefabPath = "Assets/Prefabs/" + data.itemScriptableObject + ".prefab";
+                GameObject coin = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
                 GameObject instanceCoin = Instantiate(coin, new Vector3(data.transformData.x, data.transformData.y, 0f), Quaternion.identity) as GameObject;
-                instanceCoin.name = "Coin";
-                instanceCoin.transform.SetParent(target.transform);
+                instanceCoin.name = data.itemScriptableObject;
+                if(!data.itemScriptableObject.Contains("Player"))
+                {
+                    instanceCoin.transform.SetParent(target.transform);
+                }
             }
         }
         else

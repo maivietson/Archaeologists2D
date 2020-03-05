@@ -21,6 +21,9 @@ public class LevelExit : MonoBehaviour
         Time.timeScale = 1f;
 
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // save data before next level
+        LoadSaveData.instance.SaveGame();
+
         Destroy(FindObjectOfType<ScenePersist>());
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
