@@ -41,11 +41,11 @@ public class LoadSaveData : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         target = GameObject.Find("Pickups");
-        PrepareSave();
-        //if (GameSession.instance.IsLoadData())
-        //{
-        //    LoadScene(firstLoad);
-        //}
+        //PrepareSave();
+        if (GameSession.instance.IsLoadData())
+        {
+            LoadScene(firstLoad);
+        }
     }
 
     // Update is called once per frame
@@ -64,15 +64,16 @@ public class LoadSaveData : MonoBehaviour
         foreach(Transform t in placesObjects)
         {
             CropData cropData = new CropData();
-            cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y);
+            cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y, t.localPosition.z);
             cropData.itemScriptableObject = t.name;
             print("Name of object: " + t.name);
+            print("Position: " + t.localPosition);
             data.cropData.Add(cropData);
         }
 
         Transform portExit = GameObject.Find("Level Exit").transform;
         CropData playerInfo = new CropData();
-        playerInfo.transformData = new TransformData(portExit.localPosition.x, portExit.localPosition.y - 0.2f);
+        playerInfo.transformData = new TransformData(portExit.localPosition.x, portExit.localPosition.y - 0.2f, portExit.localPosition.z);
         playerInfo.itemScriptableObject = "Player";
         data.cropData.Add(playerInfo);
 
@@ -107,9 +108,10 @@ public class LoadSaveData : MonoBehaviour
                 continue;
             }
             CropData cropData = new CropData();
-            cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y);
+            cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y, t.localPosition.z);
             cropData.itemScriptableObject = t.name;
             print("Name of object: " + t.name);
+            print("Position: " + t.localPosition);
             data.cropData.Add(cropData);
         }
 
@@ -155,11 +157,11 @@ public class LoadSaveData : MonoBehaviour
                 {
                     continue;
                 }
-                //print("Name: " + data.itemScriptableObject);
-                //print("Position: " + data.transformData.x + ", " + data.transformData.y);
+                print("Name: " + data.itemScriptableObject);
+                print("Position: " + data.transformData.x + ", " + data.transformData.y);
                 string prefabPath = "Assets/Prefabs/" + data.itemScriptableObject + ".prefab";
                 GameObject coin = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
-                GameObject instanceCoin = Instantiate(coin, new Vector3(data.transformData.x, data.transformData.y, 0f), Quaternion.identity) as GameObject;
+                GameObject instanceCoin = Instantiate(coin, new Vector3(data.transformData.x, data.transformData.y, data.transformData.z), Quaternion.identity) as GameObject;
                 instanceCoin.name = data.itemScriptableObject;
                 if(!data.itemScriptableObject.Contains("Player"))
                 {
