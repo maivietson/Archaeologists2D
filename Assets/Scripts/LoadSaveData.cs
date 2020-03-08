@@ -73,7 +73,9 @@ public class LoadSaveData : MonoBehaviour
 
         Transform portExit = GameObject.Find("Level Exit").transform;
         CropData playerInfo = new CropData();
-        playerInfo.transformData = new TransformData(portExit.localPosition.x, portExit.localPosition.y - 0.2f, portExit.localPosition.z);
+        print("Name of object: " + portExit.name);
+        print("Position: " + portExit.localPosition);
+        playerInfo.transformData = new TransformData(portExit.localPosition.x - 1.0f, portExit.localPosition.y, portExit.localPosition.z);
         playerInfo.itemScriptableObject = "Player";
         data.cropData.Add(playerInfo);
 
@@ -110,8 +112,8 @@ public class LoadSaveData : MonoBehaviour
             CropData cropData = new CropData();
             cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y, t.localPosition.z);
             cropData.itemScriptableObject = t.name;
-            print("Name of object: " + t.name);
-            print("Position: " + t.localPosition);
+            //print("Name of object: " + t.name);
+            //print("Position: " + t.localPosition);
             data.cropData.Add(cropData);
         }
 
@@ -134,6 +136,7 @@ public class LoadSaveData : MonoBehaviour
         else
         {
             string fileName = "level" + currentSceneIndex + "_played.save";
+            print(fileName);
             LoadDataGame(fileName);
         }
     }
@@ -157,8 +160,8 @@ public class LoadSaveData : MonoBehaviour
                 {
                     continue;
                 }
-                print("Name: " + data.itemScriptableObject);
-                print("Position: " + data.transformData.x + ", " + data.transformData.y);
+                //print("Name: " + data.itemScriptableObject);
+                //print("Position: " + data.transformData.x + ", " + data.transformData.y);
                 string prefabPath = "Assets/Prefabs/" + data.itemScriptableObject + ".prefab";
                 GameObject coin = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
                 GameObject instanceCoin = Instantiate(coin, new Vector3(data.transformData.x, data.transformData.y, data.transformData.z), Quaternion.identity) as GameObject;
