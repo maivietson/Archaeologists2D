@@ -7,8 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void LoadFirstLevel()
     {
-        //LoadSaveData.Instance.SetStateData(true);
-        //LoadSaveData.Instance.IsEnableLoad(true);
+        CrossParameter.FileDataLoaded = "level1.save";
         SceneManager.LoadScene(1);
     }
 }

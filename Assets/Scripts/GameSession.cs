@@ -9,12 +9,13 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] int playerLives = 3;
     [SerializeField] int score = 0;
-    [SerializeField] bool isLoad = true;
+    //[SerializeField] bool isLoad = true;
 
     [SerializeField] Text livesText;
     [SerializeField] Text scoreText;
 
     public static GameSession instance;
+    public static bool IsLoadData { get; set; }
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class GameSession : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IsLoadData = true;
         livesText.text = playerLives.ToString();
         scoreText.text = score.ToString();
     }
@@ -51,11 +53,12 @@ public class GameSession : MonoBehaviour
     {
         if(playerLives > 1)
         {
-            isLoad = false;
+            IsLoadData = false;
             TakeLife();
         }
         else
         {
+            IsLoadData = true;
             ResetGameSession();
         }
     }
@@ -72,10 +75,5 @@ public class GameSession : MonoBehaviour
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
         livesText.text = playerLives.ToString();
-    }
-
-    public bool IsLoadData()
-    {
-        return isLoad;
     }
 }

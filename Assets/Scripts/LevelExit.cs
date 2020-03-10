@@ -12,7 +12,6 @@ public class LevelExit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // save data before next level
-        //LoadSaveData.instance.SaveGame();
         FindObjectOfType<LoadSaveData>().SaveGame();
         StartCoroutine(LoadNextLevel());
     }
@@ -23,9 +22,12 @@ public class LevelExit : MonoBehaviour
         yield return new WaitForSecondsRealtime(LevelLoadDelay);
         Time.timeScale = 1f;
 
+        // setup inilization for next scene
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        CrossParameter.FileDataLoaded = "level" + (currentSceneIndex + 1) + ".save";
+        GameSession.IsLoadData = true;
 
-        Destroy(FindObjectOfType<ScenePersist>());
+        Destroy(GameObject.Find("ScenePersist"));
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }

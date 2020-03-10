@@ -42,9 +42,10 @@ public class LoadSaveData : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         target = GameObject.Find("Pickups");
         //PrepareSave();
-        if (GameSession.instance.IsLoadData())
+        if (GameSession.IsLoadData)
         {
-            LoadScene(firstLoad);
+            print(CrossParameter.FileDataLoaded);
+            LoadScene(CrossParameter.FileDataLoaded);
         }
     }
 
@@ -139,6 +140,11 @@ public class LoadSaveData : MonoBehaviour
             print(fileName);
             LoadDataGame(fileName);
         }
+    }
+
+    public void LoadScene(string fileName)
+    {
+        LoadDataGame(fileName);
     }
 
     public void LoadDataGame(string fileName)
