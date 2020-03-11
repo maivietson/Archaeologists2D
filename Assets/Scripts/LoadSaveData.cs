@@ -47,6 +47,10 @@ public class LoadSaveData : MonoBehaviour
             print(CrossParameter.FileDataLoaded);
             LoadScene(CrossParameter.FileDataLoaded);
         }
+        else
+        {
+            GameSession.IsLoadData = true;
+        }
     }
 
     // Update is called once per frame
