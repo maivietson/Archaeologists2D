@@ -13,7 +13,7 @@ public class LoadSaveData : MonoBehaviour
 
     // state
     [SerializeField] bool firstLoad = true;
-
+    [SerializeField] bool prepareData = false;
     [SerializeField] GameObject target;
 
     public static LoadSaveData instance = null;
@@ -41,15 +41,21 @@ public class LoadSaveData : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         target = GameObject.Find("Pickups");
-        //PrepareSave();
-        if (GameSession.IsLoadData)
+        if(prepareData)
         {
-            print(CrossParameter.FileDataLoaded);
-            LoadScene(CrossParameter.FileDataLoaded);
+            PrepareSave();
         }
         else
         {
-            GameSession.IsLoadData = true;
+            if (GameSession.IsLoadData)
+            {
+                print(CrossParameter.FileDataLoaded);
+                LoadScene(CrossParameter.FileDataLoaded);
+            }
+            else
+            {
+                GameSession.IsLoadData = true;
+            }
         }
     }
 
