@@ -54,6 +54,7 @@ public class LoadSaveData : MonoBehaviour
             }
             else
             {
+                print(CrossParameter.FileDataLoaded);
                 GameSession.IsLoadData = true;
             }
         }
@@ -77,15 +78,15 @@ public class LoadSaveData : MonoBehaviour
             CropData cropData = new CropData();
             cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y, t.localPosition.z);
             cropData.itemScriptableObject = t.name;
-            print("Name of object: " + t.name);
-            print("Position: " + t.localPosition);
+            //print("Name of object: " + t.name);
+            //print("Position: " + t.localPosition);
             data.cropData.Add(cropData);
         }
 
         Transform portExit = GameObject.Find("Level Exit").transform;
         CropData playerInfo = new CropData();
-        print("Name of object: " + portExit.name);
-        print("Position: " + portExit.localPosition);
+        //print("Name of object: " + portExit.name);
+        //print("Position: " + portExit.localPosition);
         playerInfo.transformData = new TransformData(portExit.localPosition.x - 1.0f, portExit.localPosition.y, portExit.localPosition.z);
         playerInfo.itemScriptableObject = "Player";
         data.cropData.Add(playerInfo);
@@ -160,6 +161,7 @@ public class LoadSaveData : MonoBehaviour
     public void LoadDataGame(string fileName)
     {
         string filePath = "Assets/DataGame/" + fileName;
+        print(filePath);
         // handle file
         if (File.Exists(filePath))
         {
@@ -176,8 +178,8 @@ public class LoadSaveData : MonoBehaviour
                 {
                     continue;
                 }
-                //print("Name: " + data.itemScriptableObject);
-                //print("Position: " + data.transformData.x + ", " + data.transformData.y);
+                print("Name: " + data.itemScriptableObject);
+                print("Position: " + data.transformData.x + ", " + data.transformData.y);
                 string prefabPath = "Assets/Prefabs/" + data.itemScriptableObject + ".prefab";
                 GameObject coin = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
                 GameObject instanceCoin = Instantiate(coin, new Vector3(data.transformData.x, data.transformData.y, data.transformData.z), Quaternion.identity) as GameObject;
