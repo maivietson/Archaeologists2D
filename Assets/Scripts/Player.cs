@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -23,6 +24,8 @@ public class Player : MonoBehaviour
 
     // State
     bool isAlive = true;
+    bool isStartCollider = false;
+    bool isEndCollider = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,31 @@ public class Player : MonoBehaviour
         Jump();
         Die();
         FlipSprite();
+        StartSpawner();
+    }
+
+    private void StartSpawner()
+    {
+        //if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Spawn")) && !ObstacleSpawner.instance.isSpawning)
+        //{
+        //    ObstacleSpawner.instance.isSpawner = true;
+        //}
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "SpawnStart" && !isStartCollider)
+        {
+            ObstacleSpawner[] gameObjects = FindObjectsOfType<ObstacleSpawner>();
+            print("collision");
+            isStartCollider = true;
+            isEndCollider = false;
+            foreach(ObstacleSpawner ob in gameObjects)
+            {
+                ob.isSpawner = true;
+                ob.startSpawning = true;
+            }
+        }
     }
 
     private void Run()
@@ -89,7 +117,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        if(myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+        if(myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards", "FireObtacles")))
         {
             isAlive = false;
             myAnimator.SetTrigger("Dying");

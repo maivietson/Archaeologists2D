@@ -5,4 +5,6 @@ using UnityEngine;
 public static class CrossParameter
 {
     public static string FileDataLoaded { get; set; }
+
+    public static bool IsSpawner { get; set; }
 }

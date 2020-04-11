@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coin
+  - SpawnStart
+  - SpawnEnd
   layers:
   - Default
   - TransparentFX
@@ -23,10 +25,10 @@ TagManager:
   - Interactables
   - FireObtacles
   - MainMenu
-  - 
-  - 
-  - 
-  - 
+  - Grass
+  - FakeGround
+  - Spawn
+  - HazardOb
   - 
   - 
   - 
@@ -63,9 +65,21 @@ TagManager:
   - name: Foreground
     uniqueID: 1586566647
     locked: 0
+  - name: Grass
+    uniqueID: 868241613
+    locked: 0
   - name: Interactables
     uniqueID: 4040034023
     locked: 0
   - name: FireObtacles
     uniqueID: 2844701817
+    locked: 0
+  - name: FakeGround
+    uniqueID: 716007945
+    locked: 0
+  - name: Spawn
+    uniqueID: 1586119091
+    locked: 0
+  - name: HazardOb
+    uniqueID: 4230839849
     locked: 0
