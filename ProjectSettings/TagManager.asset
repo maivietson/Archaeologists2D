@@ -29,7 +29,7 @@ TagManager:
   - FakeGround
   - Spawn
   - HazardOb
-  - 
+  - Chest
   - 
   - 
   - 
@@ -82,4 +82,7 @@ TagManager:
     locked: 0
   - name: HazardOb
     uniqueID: 4230839849
+    locked: 0
+  - name: Chest
+    uniqueID: 481761039
     locked: 0
