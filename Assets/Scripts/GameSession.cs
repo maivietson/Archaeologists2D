@@ -63,6 +63,17 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public void AddLife(int live)
+    {
+        playerLives += live;
+        livesText.text = playerLives.ToString();
+    }
+
     private void ResetGameSession()
     {
         SceneManager.LoadScene(0);

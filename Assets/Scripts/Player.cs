@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpSpeed = 5.0f;
     [SerializeField] float climbSpeed = 5.0f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
+    [SerializeField] GameObject panelNPCs;
 
     // Panel Option
     // [SerializeField] GameObject panelOptions;
@@ -46,15 +47,6 @@ public class Player : MonoBehaviour
         Jump();
         Die();
         FlipSprite();
-        StartSpawner();
-    }
-
-    private void StartSpawner()
-    {
-        //if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Spawn")) && !ObstacleSpawner.instance.isSpawning)
-        //{
-        //    ObstacleSpawner.instance.isSpawner = true;
-        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,13 +54,25 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "SpawnStart" && !isStartCollider)
         {
             ObstacleSpawner[] gameObjects = FindObjectsOfType<ObstacleSpawner>();
-            print("collision");
+            //print("collision");
             isStartCollider = true;
             isEndCollider = false;
             foreach(ObstacleSpawner ob in gameObjects)
             {
                 ob.isSpawner = true;
                 ob.startSpawning = true;
+            }
+        }
+
+        if(collision.gameObject.tag == "SpawnEnd" && !isEndCollider)
+        {
+            ObstacleSpawner[] gameObjects = FindObjectsOfType<ObstacleSpawner>();
+            isStartCollider = false;
+            isEndCollider = true;
+            foreach (ObstacleSpawner ob in gameObjects)
+            {
+                ob.isSpawner = false;
+                ob.startSpawning = false;
             }
         }
     }

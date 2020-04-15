@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ChestConvert.cs" />
     <Compile Include="Assets\Scripts\CoinPickup.cs" />
     <Compile Include="Assets\Scripts\ControlCollider.cs" />
     <Compile Include="Assets\Scripts\CrossParameter.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\ScenePersist.cs" />
     <Compile Include="Assets\Scripts\ScenePersistManager.cs" />
+    <Compile Include="Assets\Scripts\Texts.cs" />
     <Compile Include="Assets\Scripts\VerticalScroll.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Project_UnityGame/1/Archaeologists2D/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
