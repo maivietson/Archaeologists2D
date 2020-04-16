@@ -53487,9 +53487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Unfortunately you have activated the snare automatically, be aware above
-    your head and the traps at your feet. Disable points will be placed on your way.
-    Good luck!!!
+  m_Text: 
 --- !u!222 &857736847
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58260,7 +58258,7 @@ GameObject:
   - component: {fileID: 1331049519}
   - component: {fileID: 1331049518}
   m_Layer: 0
-  m_Name: Button
+  m_Name: btnNPCs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58328,7 +58326,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1331049519}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2035553454}
+        m_MethodName: onClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1331049519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59505,7 +59514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1425771995
 RectTransform:
   m_ObjectHideFlags: 0
@@ -65157,6 +65166,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2032925300}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2035553454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1907085784172273810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df643d22bab571c46b47d108ecfce22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2078826541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67175,6 +67196,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
+      propertyPath: npcButton
+      value: 
+      objectReference: {fileID: 857736846}
+    - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
+      propertyPath: panelNPCs
+      value: 
+      objectReference: {fileID: 1425771994}
+    - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
+      propertyPath: txtNPCs
+      value: 
+      objectReference: {fileID: 857736846}
     - target: {fileID: 1907085785711399425, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
       propertyPath: m_Name
@@ -67183,12 +67216,12 @@ PrefabInstance:
     - target: {fileID: 1907085785711399430, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.5
+      value: 87.61
       objectReference: {fileID: 0}
     - target: {fileID: 1907085785711399430, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 1907085785711399430, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
@@ -67267,7 +67300,7 @@ PrefabInstance:
     - target: {fileID: 3247092107542629510, guid: 426649bd2af826f4883141ee294f8662,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 88
+      value: 88.05
       objectReference: {fileID: 0}
     - target: {fileID: 3247092107542629510, guid: 426649bd2af826f4883141ee294f8662,
         type: 3}
@@ -67451,7 +67484,7 @@ PrefabInstance:
     - target: {fileID: 7933453191620240802, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.900002
+      value: 2.209999
       objectReference: {fileID: 0}
     - target: {fileID: 7933453191620240802, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
@@ -67461,7 +67494,7 @@ PrefabInstance:
     - target: {fileID: 7933453191620240802, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 7933453191620240803, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
@@ -67486,12 +67519,12 @@ PrefabInstance:
     - target: {fileID: 7933453192186708079, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.900002
+      value: 2.209999
       objectReference: {fileID: 0}
     - target: {fileID: 7933453192186708079, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 7933453192186708079, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
@@ -67581,12 +67614,12 @@ PrefabInstance:
     - target: {fileID: 7933453193435852130, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.900002
+      value: 2.209999
       objectReference: {fileID: 0}
     - target: {fileID: 7933453193435852130, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 7933453193435852130, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}

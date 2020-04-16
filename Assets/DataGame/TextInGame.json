@@ -1,0 +1,6 @@
+{
+  "NPCs": {
+    "STR_START_COLLIDER_TRAPS": "Unfortunately you have activated the snare automatically, be aware above your head and the traps at your feet. Disable points will be placed on your way. Good luck!!!",
+    "STR_END_COLLIDER_TRAPS": "Congratulations!! You have turned off the automatic trap system. Good luck !!"
+  }
+}

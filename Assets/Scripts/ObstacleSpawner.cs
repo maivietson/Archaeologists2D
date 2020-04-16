@@ -46,7 +46,7 @@ public class ObstacleSpawner : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         while (isSpawner)
         {
-            print("Colliderring");
+            //print("Colliderring");
             SpawnObstacle();
             waitTime = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(waitTime);

@@ -347,6 +347,9 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>F:/Project_UnityGame/1/Archaeologists2D/Assets/Libs/LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>F:/Project_UnityGame/1/Archaeologists2D/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>

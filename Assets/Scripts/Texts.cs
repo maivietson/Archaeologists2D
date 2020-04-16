@@ -1,18 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using LitJson;
 
 public class Texts : MonoBehaviour
 {
+    // handle string json
+    private string jsonString;
+    private JsonData data;
+
+    // instance 
+    public static Texts instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        jsonString = File.ReadAllText(Application.dataPath + "/DataGame/TextInGame.json");
+        data = JsonMapper.ToObject(jsonString);
     }
 
-    // Update is called once per frame
-    void Update()
+    public JsonData GetData()
     {
-        
+        return data;
+    }
+
+    public string GetText(string parent, string id)
+    {
+        return data[parent][id].ToString();
     }
 }

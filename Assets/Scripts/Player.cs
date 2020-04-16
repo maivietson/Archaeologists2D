@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour
@@ -12,21 +13,25 @@ public class Player : MonoBehaviour
     [SerializeField] float climbSpeed = 5.0f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
     [SerializeField] GameObject panelNPCs;
+    [SerializeField] Text txtNPCs;
 
     // Panel Option
     // [SerializeField] GameObject panelOptions;
 
     // Cached component references
-    Animator myAnimator;
-    Rigidbody2D myRigibody;
-    CapsuleCollider2D myBodyCollider2D;
-    BoxCollider2D myFeetCollider2D;
-    float gravityScaleAtStart;
+    private Animator myAnimator;
+    private Rigidbody2D myRigibody;
+    private CapsuleCollider2D myBodyCollider2D;
+    private BoxCollider2D myFeetCollider2D;
+    private float gravityScaleAtStart;
 
     // State
-    bool isAlive = true;
-    bool isStartCollider = false;
-    bool isEndCollider = false;
+    private bool isAlive = true;
+    private bool isStartCollider = false;
+    private bool isEndCollider = false;
+
+    // handle time count
+    private int timeCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -47,12 +52,15 @@ public class Player : MonoBehaviour
         Jump();
         Die();
         FlipSprite();
+        CountTime();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "SpawnStart" && !isStartCollider)
         {
+            txtNPCs.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_START_COLLIDER_TRAPS);
+            panelNPCs.SetActive(true);
             ObstacleSpawner[] gameObjects = FindObjectsOfType<ObstacleSpawner>();
             //print("collision");
             isStartCollider = true;
@@ -66,6 +74,8 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.tag == "SpawnEnd" && !isEndCollider)
         {
+            txtNPCs.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_END_COLLIDER_TRAPS);
+            panelNPCs.SetActive(true);
             ObstacleSpawner[] gameObjects = FindObjectsOfType<ObstacleSpawner>();
             isStartCollider = false;
             isEndCollider = true;
@@ -75,6 +85,21 @@ public class Player : MonoBehaviour
                 ob.startSpawning = false;
             }
         }
+    }
+
+    private void CountTime()
+    {
+        if(isStartCollider || isEndCollider) ++timeCount;
+        if(timeCount == 600)
+        {
+            panelNPCs.SetActive(false);
+            timeCount = 0;
+        }
+    }
+
+    public void onClickButton()
+    {
+        panelNPCs.SetActive(false);
     }
 
     private void Run()
