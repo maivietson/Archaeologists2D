@@ -30,6 +30,8 @@ public class ChestConvert : MonoBehaviour
     {
         if (chest.IsTouchingLayers(LayerMask.GetMask("Player")))
         {
+            textTitleMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_CONVERT_TITLE);
+            textContentMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_CONVERT_CONTENT);
             panelQuestion.SetActive(true);
         }
     }

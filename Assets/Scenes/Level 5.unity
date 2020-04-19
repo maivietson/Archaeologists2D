@@ -59738,10 +59738,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: 'You have found the exchange chest. Here you can exchange the gold you earned
-    for life
-
-    500 gold = 1 life'
+  m_Text: 
 --- !u!222 &1437111580
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59928,7 +59925,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Congratulation!!!
+  m_Text: 
 --- !u!222 &1489781763
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67216,12 +67213,12 @@ PrefabInstance:
     - target: {fileID: 1907085785711399430, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 87.61
+      value: 66.7
       objectReference: {fileID: 0}
     - target: {fileID: 1907085785711399430, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: 4.83
       objectReference: {fileID: 0}
     - target: {fileID: 1907085785711399430, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
@@ -67484,7 +67481,7 @@ PrefabInstance:
     - target: {fileID: 7933453191620240802, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.209999
+      value: -18.700005
       objectReference: {fileID: 0}
     - target: {fileID: 7933453191620240802, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
@@ -67494,7 +67491,7 @@ PrefabInstance:
     - target: {fileID: 7933453191620240802, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: 4.83
       objectReference: {fileID: 0}
     - target: {fileID: 7933453191620240803, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
@@ -67519,12 +67516,12 @@ PrefabInstance:
     - target: {fileID: 7933453192186708079, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.209999
+      value: 90.12
       objectReference: {fileID: 0}
     - target: {fileID: 7933453192186708079, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: -6.12
       objectReference: {fileID: 0}
     - target: {fileID: 7933453192186708079, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
@@ -67614,12 +67611,12 @@ PrefabInstance:
     - target: {fileID: 7933453193435852130, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.209999
+      value: -11.533592
       objectReference: {fileID: 0}
     - target: {fileID: 7933453193435852130, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: 4.811817
       objectReference: {fileID: 0}
     - target: {fileID: 7933453193435852130, guid: 1ca86763272dd9e4ea631655a6752c03,
         type: 3}

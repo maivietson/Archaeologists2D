@@ -1,6 +1,8 @@
 {
   "NPCs": {
     "STR_START_COLLIDER_TRAPS": "Unfortunately you have activated the snare automatically, be aware above your head and the traps at your feet. Disable points will be placed on your way. Good luck!!!",
-    "STR_END_COLLIDER_TRAPS": "Congratulations!! You have turned off the automatic trap system. Good luck !!"
+    "STR_END_COLLIDER_TRAPS": "Congratulations!! You have turned off the automatic trap system. Good luck !!",
+	"STR_COLLIDER_CHEST_CONVERT_TITLE": "Congratulation!!!",
+	"STR_COLLIDER_CHEST_CONVERT_CONTENT": "You have found the exchange chest. Here you can exchange the gold you earned for life (500 gold = 1 life)"
   }
 }

@@ -8,21 +8,25 @@ public class VerticalScroll : MonoBehaviour
     [SerializeField] float scrollRate = 0.2f;
     [SerializeField] float limitMaxPosY;
     [SerializeField] float linitMinPosY;
+    [SerializeField] bool isTransform;
 
     float moveY;
 
     void Update()
     {
-        float positionY = gameObject.transform.localPosition.y;
-        if(positionY >= limitMaxPosY)
+        if(isTransform)
         {
-            moveY = -scrollRate * Time.deltaTime * 2;
-        }
+            float positionY = gameObject.transform.localPosition.y;
+            if (positionY >= limitMaxPosY)
+            {
+                moveY = -scrollRate * Time.deltaTime * 2;
+            }
 
-        if(positionY <= linitMinPosY)
-        {
-            moveY = scrollRate * Time.deltaTime * 2;
+            if (positionY <= linitMinPosY)
+            {
+                moveY = scrollRate * Time.deltaTime * 2;
+            }
+            transform.Translate(new Vector2(0, moveY));
         }
-        transform.Translate(new Vector2(0, moveY));
     }
 }
