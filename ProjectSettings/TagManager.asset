@@ -7,6 +7,7 @@ TagManager:
   - Coin
   - SpawnStart
   - SpawnEnd
+  - GateStart
   layers:
   - Default
   - TransparentFX
@@ -62,6 +63,9 @@ TagManager:
   - name: Player
     uniqueID: 1456725113
     locked: 0
+  - name: HazardOb
+    uniqueID: 4230839849
+    locked: 0
   - name: Foreground
     uniqueID: 1586566647
     locked: 0
@@ -79,9 +83,6 @@ TagManager:
     locked: 0
   - name: Spawn
     uniqueID: 1586119091
-    locked: 0
-  - name: HazardOb
-    uniqueID: 4230839849
     locked: 0
   - name: Chest
     uniqueID: 481761039

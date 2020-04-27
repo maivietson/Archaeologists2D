@@ -85,6 +85,13 @@ public class Player : MonoBehaviour
                 ob.startSpawning = false;
             }
         }
+
+        if(collision.gameObject.tag == "GateStart" && !isStartCollider)
+        {
+            txtNPCs.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_RUN_FAST_AS_CAN);
+            panelNPCs.SetActive(true);
+            isStartCollider = true;
+        }
     }
 
     private void CountTime()
