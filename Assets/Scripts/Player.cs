@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.tag == "GateStart" && !isStartCollider)
         {
-            txtNPCs.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_RUN_FAST_AS_CAN);
+            txtNPCs.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_IMFORMATION_6);
             panelNPCs.SetActive(true);
             isStartCollider = true;
         }

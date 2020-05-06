@@ -2,8 +2,11 @@
   "NPCs": {
     "STR_START_COLLIDER_TRAPS": "Unfortunately you have activated the snare automatically, be aware above your head and the traps at your feet. Disable points will be placed on your way. Good luck!!!",
     "STR_END_COLLIDER_TRAPS": "Congratulations!! You have turned off the automatic trap system. Good luck !!",
-	"STR_COLLIDER_CHEST_CONVERT_TITLE": "Congratulation!!!",
-	"STR_COLLIDER_CHEST_CONVERT_CONTENT": "You have found the exchange chest. Here you can exchange the gold you earned for life (500 gold = 1 life)",
-	"STR_RUN_FAST_AS_CAN": "Run as fast as possible !!!"
+    "STR_COLLIDER_CHEST_CONVERT_TITLE": "Congratulation!!!",
+    "STR_COLLIDER_CHEST_CONVERT_CONTENT": "You have found the exchange chest. Here you can exchange the gold you earned for life (500 gold = 1 life)",
+    "STR_COLLIDER_CHEST_NOT_ENOUGH_GOLD": "Unfortunately you do not have enough gold to turn into live",
+    "STR_IMFORMATION_6": "Run as fast as possible !!!",
+    "STR_COLLIDER_CHEST_TAKE_GOLD": "You have received XXX gold. Look for a chest with a heart sign to convert it into live",
+    "STR_COLLIDER_CHEST_TAKE_LIVE": "You have received XXX live. Use them skillfully !!"
   }
 }

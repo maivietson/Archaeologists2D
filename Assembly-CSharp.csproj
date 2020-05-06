@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Texts.cs" />
     <Compile Include="Assets\Scripts\Types.cs" />
     <Compile Include="Assets\Scripts\VerticalScroll.cs" />
+    <Compile Include="Assets\test.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Project_UnityGame/1/Archaeologists2D/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

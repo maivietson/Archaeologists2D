@@ -66,6 +66,9 @@ TagManager:
   - name: HazardOb
     uniqueID: 4230839849
     locked: 0
+  - name: FireObtacles
+    uniqueID: 2844701817
+    locked: 0
   - name: Foreground
     uniqueID: 1586566647
     locked: 0
@@ -74,9 +77,6 @@ TagManager:
     locked: 0
   - name: Interactables
     uniqueID: 4040034023
-    locked: 0
-  - name: FireObtacles
-    uniqueID: 2844701817
     locked: 0
   - name: FakeGround
     uniqueID: 716007945

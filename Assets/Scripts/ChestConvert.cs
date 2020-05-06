@@ -12,7 +12,11 @@ public class ChestConvert : MonoBehaviour
     [SerializeField] Text textContentMess;
 
     [SerializeField] int coinConvert;
+    [SerializeField] int takeCoin;
+    [SerializeField] int takeLive;
+    [SerializeField] float timeDelay;
 
+    bool isOpenChest = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,30 +32,86 @@ public class ChestConvert : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (chest.IsTouchingLayers(LayerMask.GetMask("Player")))
+        if (chest.IsTouchingLayers(LayerMask.GetMask("Player")) && !isOpenChest)
         {
-            textTitleMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_CONVERT_TITLE);
-            textContentMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_CONVERT_CONTENT);
-            panelQuestion.SetActive(true);
+            switch(gameObject.name)
+            {
+                case "GoldToLive":
+                    {
+                        if (GameSession.instance.GetScore() > coinConvert)
+                        {
+                            //isOpenChest = true;
+                            textTitleMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_CONVERT_TITLE);
+                            textContentMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_CONVERT_CONTENT);
+                            panelQuestion.SetActive(true);
+                            ConvertGold();
+                        }
+                        else
+                        {
+                            textContentMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_NOT_ENOUGH_GOLD);
+                            panelQuestion.SetActive(true);
+                            NotEnoughGold();
+                        }
+                    }
+                    break;
+                case "TakeGold":
+                    {
+                        isOpenChest = true;
+                        string content = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_TAKE_GOLD);
+                        content = content.Replace("XXX", takeCoin.ToString());
+                        textTitleMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_CONVERT_TITLE);
+                        textContentMess.text = content;
+                        panelQuestion.SetActive(true);
+                        TakeGold();
+                    }
+                    break;
+                case "TakeLive":
+                    {
+                        isOpenChest = true;
+                        string content = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_TAKE_LIVE);
+                        content = content.Replace("XXX", takeLive.ToString());
+                        textTitleMess.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_COLLIDER_CHEST_CONVERT_TITLE);
+                        textContentMess.text = content;
+                        panelQuestion.SetActive(true);
+                        TakeLive();
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
-    public void ConvertGold()
+    private void ConvertGold()
     {
-        if(GameSession.instance.GetScore() > coinConvert)
+        while(GameSession.instance.GetScore() >= coinConvert)
         {
             GameSession.instance.AddToScore(-coinConvert);
             GameSession.instance.AddLife(1);
         }
-        else
-        {
-            panelQuestion.SetActive(false);
-        }
+        StartCoroutine("DelayPopup");
     }
 
-    public void NoConvert()
+    private void NotEnoughGold()
     {
+        StartCoroutine("DelayPopup");
+    }
+
+    private void TakeGold()
+    {
+        GameSession.instance.TakeCoin(takeCoin);
+        StartCoroutine("DelayPopup");
+    }
+
+    private void TakeLive()
+    {
+        GameSession.instance.AddLife(takeLive);
+        StartCoroutine("DelayPopup");
+    }
+
+    IEnumerator DelayPopup()
+    {
+        yield return new WaitForSeconds(timeDelay);
         panelQuestion.SetActive(false);
     }
-
 }

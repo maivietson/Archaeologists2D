@@ -49,6 +49,15 @@ public class GameSession : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    public void TakeCoin(int coin)
+    {
+        for(int i = 0; i <= coin; i+=10)
+        {
+            score += i;
+            scoreText.text = score.ToString();
+        }
+    }
+
     public void ProcessPlayerDeath()
     {
         if(playerLives > 1)

@@ -37,4 +37,9 @@ public class Texts : MonoBehaviour
     {
         return data[parent][id].ToString();
     }
+
+    public string GetText(ushort parent, ushort id)
+    {
+        return data[parent][id].ToString();
+    }
 }
