@@ -13,18 +13,27 @@ public class VerticalScroll : MonoBehaviour
 
     float moveY, moveX;
 
+    bool firstRun = true;
+
     void Update()
     {
         if(!isTransformX)
         {
             float positionY = gameObject.transform.localPosition.y;
-            if (positionY >= limitMaxPosY)
+            if (positionY > limitMaxPosY)
             {
                 moveY = -scrollRate * Time.deltaTime * scaleTime;
             }
 
-            if (positionY <= linitMinPosY)
+            if (positionY < linitMinPosY)
             {
+                moveY = scrollRate * Time.deltaTime * scaleTime;
+            }
+
+            if(firstRun && ((linitMinPosY <= positionY) && (positionY <= limitMaxPosY)))
+            {
+                //print("first run");
+                firstRun = false;
                 moveY = scrollRate * Time.deltaTime * scaleTime;
             }
             transform.Translate(new Vector2(0, moveY));
@@ -32,13 +41,19 @@ public class VerticalScroll : MonoBehaviour
         else
         {
             float positionX = gameObject.transform.localPosition.x;
-            if (positionX >= limitMaxPosY)
+            if (positionX > limitMaxPosY)
             {
                 moveX = -scrollRate * Time.deltaTime * scaleTime;
             }
 
-            if (positionX <= linitMinPosY)
+            if (positionX < linitMinPosY)
             {
+                moveX = scrollRate * Time.deltaTime * scaleTime;
+            }
+
+            if (firstRun && ((linitMinPosY <= positionX) && (positionX <= limitMaxPosY)))
+            {
+                firstRun = false;
                 moveX = scrollRate * Time.deltaTime * scaleTime;
             }
             transform.Translate(new Vector2(moveX, 0));
