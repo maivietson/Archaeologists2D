@@ -31,7 +31,7 @@ TagManager:
   - Spawn
   - HazardOb
   - Chest
-  - 
+  - DynamicGround
   - 
   - 
   - 
@@ -62,6 +62,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1456725113
+    locked: 0
+  - name: DynamicGround
+    uniqueID: 3102381885
     locked: 0
   - name: HazardOb
     uniqueID: 4230839849

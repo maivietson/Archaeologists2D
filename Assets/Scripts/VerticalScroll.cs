@@ -10,6 +10,7 @@ public class VerticalScroll : MonoBehaviour
     [SerializeField] float limitMaxPosY;
     [SerializeField] float linitMinPosY;
     [SerializeField] bool isTransformX = false;
+    public bool isPause = false;
 
     float moveY, moveX;
 
@@ -17,46 +18,49 @@ public class VerticalScroll : MonoBehaviour
 
     void Update()
     {
-        if(!isTransformX)
+        if(!isPause)
         {
-            float positionY = gameObject.transform.localPosition.y;
-            if (positionY > limitMaxPosY)
+            if (!isTransformX)
             {
-                moveY = -scrollRate * Time.deltaTime * scaleTime;
-            }
+                float positionY = gameObject.transform.localPosition.y;
+                if (positionY > limitMaxPosY)
+                {
+                    moveY = -scrollRate * Time.deltaTime * scaleTime;
+                }
 
-            if (positionY < linitMinPosY)
-            {
-                moveY = scrollRate * Time.deltaTime * scaleTime;
-            }
+                if (positionY < linitMinPosY)
+                {
+                    moveY = scrollRate * Time.deltaTime * scaleTime;
+                }
 
-            if(firstRun && ((linitMinPosY <= positionY) && (positionY <= limitMaxPosY)))
-            {
-                //print("first run");
-                firstRun = false;
-                moveY = scrollRate * Time.deltaTime * scaleTime;
+                if (firstRun && ((linitMinPosY <= positionY) && (positionY <= limitMaxPosY)))
+                {
+                    //print("first run");
+                    firstRun = false;
+                    moveY = scrollRate * Time.deltaTime * scaleTime;
+                }
+                transform.Translate(new Vector2(0, moveY));
             }
-            transform.Translate(new Vector2(0, moveY));
-        }
-        else
-        {
-            float positionX = gameObject.transform.localPosition.x;
-            if (positionX > limitMaxPosY)
+            else
             {
-                moveX = -scrollRate * Time.deltaTime * scaleTime;
-            }
+                float positionX = gameObject.transform.localPosition.x;
+                if (positionX > limitMaxPosY)
+                {
+                    moveX = -scrollRate * Time.deltaTime * scaleTime;
+                }
 
-            if (positionX < linitMinPosY)
-            {
-                moveX = scrollRate * Time.deltaTime * scaleTime;
-            }
+                if (positionX < linitMinPosY)
+                {
+                    moveX = scrollRate * Time.deltaTime * scaleTime;
+                }
 
-            if (firstRun && ((linitMinPosY <= positionX) && (positionX <= limitMaxPosY)))
-            {
-                firstRun = false;
-                moveX = scrollRate * Time.deltaTime * scaleTime;
+                if (firstRun && ((linitMinPosY <= positionX) && (positionX <= limitMaxPosY)))
+                {
+                    firstRun = false;
+                    moveX = scrollRate * Time.deltaTime * scaleTime;
+                }
+                transform.Translate(new Vector2(moveX, 0));
             }
-            transform.Translate(new Vector2(moveX, 0));
         }
     }
 }
