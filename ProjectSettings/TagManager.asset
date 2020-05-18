@@ -8,6 +8,7 @@ TagManager:
   - SpawnStart
   - SpawnEnd
   - GateStart
+  - PointStart
   layers:
   - Default
   - TransparentFX

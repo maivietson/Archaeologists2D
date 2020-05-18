@@ -10,15 +10,25 @@ public class VerticalScroll : MonoBehaviour
     [SerializeField] float limitMaxPosY;
     [SerializeField] float linitMinPosY;
     [SerializeField] bool isTransformX = false;
-    public bool isPause = false;
+    public bool isPause = true;
+
+    public static VerticalScroll instance;
 
     float moveY, moveX;
 
     bool firstRun = true;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Update()
     {
-        if(!isPause)
+        if(isPause)
         {
             if (!isTransformX)
             {
