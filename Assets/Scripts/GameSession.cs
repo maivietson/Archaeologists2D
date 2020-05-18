@@ -96,4 +96,9 @@ public class GameSession : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
         livesText.text = playerLives.ToString();
     }
+
+    public void ToolTip()
+    {
+
+    }
 }
