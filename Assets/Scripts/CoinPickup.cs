@@ -16,7 +16,10 @@ public class CoinPickup : MonoBehaviour
             print("Collider Coin");
             ProcessCollision = false;
             FindObjectOfType<GameSession>().AddToScore(pointsForCoinPickup);
-            AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position);
+            if(GameSession.instance.isSoundOff)
+            {
+                AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position);
+            }
             Destroy(gameObject);
         }
     }

@@ -13,9 +13,12 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] Text livesText;
     [SerializeField] Text scoreText;
+    [SerializeField] Image soundOff;
 
     public static GameSession instance;
     public static bool IsLoadData { get; set; }
+
+    public bool isSoundOff = false;
 
     private void Awake()
     {
@@ -100,5 +103,12 @@ public class GameSession : MonoBehaviour
     public void ToolTip()
     {
 
+    }
+
+    public void Sound()
+    {
+        print("press");
+        isSoundOff = !isSoundOff;
+        soundOff.enabled = isSoundOff;
     }
 }
