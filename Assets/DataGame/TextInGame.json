@@ -8,5 +8,16 @@
     "STR_IMFORMATION_6": "Run as fast as possible !!!",
     "STR_COLLIDER_CHEST_TAKE_GOLD": "You have received XXX gold. Look for a chest with a heart sign to convert it into live",
     "STR_COLLIDER_CHEST_TAKE_LIVE": "You have received XXX live. Use them skillfully !!"
+  },
+  "TOOLTIP": {
+  	"TOOLTIP_LEVEL_0": "",
+  	"TOOLTIP_LEVEL_1": "",
+  	"TOOLTIP_LEVEL_2": "",
+  	"TOOLTIP_LEVEL_3": "",
+  	"TOOLTIP_LEVEL_4": "",
+  	"TOOLTIP_LEVEL_5": "",
+  	"TOOLTIP_LEVEL_6": "",
+  	"TOOLTIP_LEVEL_7": "",
+  	"TOOLTIP_LEVEL_8": ""
   }
 }

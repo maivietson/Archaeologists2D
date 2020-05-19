@@ -13,7 +13,13 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] Text livesText;
     [SerializeField] Text scoreText;
+
+    // sound
     [SerializeField] Image soundOff;
+
+    // tooltip
+    [SerializeField] GameObject panelTooltip;
+    [SerializeField] Text contentTooltip;
 
     public static GameSession instance;
     public static bool IsLoadData { get; set; }

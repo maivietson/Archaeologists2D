@@ -28,5 +28,7 @@ public class Types : MonoBehaviour
             public static ushort STR_COLLIDER_CHEST_TAKE_GOLD = 6;
             public static ushort STR_COLLIDER_CHEST_TAKE_LIVE = 7;
         }
+
+        public static ushort Tooltip = 1;
     }
 }
