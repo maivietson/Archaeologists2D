@@ -18,7 +18,7 @@ public class LoadSaveData : MonoBehaviour
 
     public static LoadSaveData instance = null;
 
-    private void wake()
+    private void Awake()
     {
         int numLoadSaveData = FindObjectsOfType<LoadSaveData>().Length;
         if(numLoadSaveData > 1)
@@ -66,6 +66,30 @@ public class LoadSaveData : MonoBehaviour
         
     }
 
+    private LevelData PrepareDataSave()
+    {
+        List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
+        placesObjects.RemoveAt(0);
+
+        LevelData data = new LevelData();
+
+        foreach (Transform t in placesObjects)
+        {
+            CropData cropData = new CropData();
+            cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y, t.localPosition.z);
+            cropData.itemScriptableObject = t.name;
+            data.cropData.Add(cropData);
+        }
+
+        CropData playerInfo = new CropData();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerInfo.transformData = new TransformData(player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z);
+        playerInfo.itemScriptableObject = "Player";
+        data.cropData.Add(playerInfo);
+
+        return data;
+    }
+
     private LevelData CreateSaveGameObject()
     {
         List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
@@ -102,6 +126,18 @@ public class LoadSaveData : MonoBehaviour
         // binary data
         BinaryFormatter bf = new BinaryFormatter();
         string fileName = "level" + currentSceneIndex + "_played.save";
+        string filePath = "Assets/DataGame/" + fileName;
+        FileStream file = File.Create(filePath);
+        bf.Serialize(file, save);
+        file.Close();
+    }
+
+    public void SaveDataGame()
+    {
+        LevelData save = PrepareDataSave();
+        // binary data
+        BinaryFormatter bf = new BinaryFormatter();
+        string fileName = "level" + currentSceneIndex + "_saved.save";
         string filePath = "Assets/DataGame/" + fileName;
         FileStream file = File.Create(filePath);
         bf.Serialize(file, save);

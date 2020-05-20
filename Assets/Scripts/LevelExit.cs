@@ -12,7 +12,7 @@ public class LevelExit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // save data before next level
-        FindObjectOfType<LoadSaveData>().SaveGame();
+        //FindObjectOfType<LoadSaveData>().SaveGame();
         StartCoroutine(LoadNextLevel());
     }
 

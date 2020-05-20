@@ -31,4 +31,10 @@ public class Types : MonoBehaviour
 
         public static ushort Tooltip = 1;
     }
+
+    public enum TextsID
+    {
+        ID_NPCs = 0,
+        ID_TOOLTIP = 1
+    }
 }

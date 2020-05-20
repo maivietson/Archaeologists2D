@@ -42,4 +42,14 @@ public class Texts : MonoBehaviour
     {
         return data[parent][id].ToString();
     }
+
+    public string GetText(Types.TextsID textID, int id)
+    {
+        return data[(int)textID][id].ToString();
+    }
+
+    public string GetText(Types.TextsID textID, ushort id)
+    {
+        return data[(int)textID][id].ToString();
+    }
 }
