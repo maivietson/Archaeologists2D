@@ -100,6 +100,23 @@ public class GameSession : MonoBehaviour
         return score;
     }
 
+    public int GetLive()
+    {
+        return playerLives;
+    }
+
+    public void SetScore(int coin)
+    {
+        score = coin;
+        scoreText.text = coin.ToString();
+    }
+
+    public void SetLive(int live)
+    {
+        playerLives = live;
+        livesText.text = live.ToString();
+    }
+
     public void AddLife(int live)
     {
         playerLives += live;

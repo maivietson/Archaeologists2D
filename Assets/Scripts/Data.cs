@@ -7,6 +7,8 @@ using UnityEngine;
 public class LevelData
 {
     public List<CropData> cropData = new List<CropData>();
+    public int numLive { get; set; }
+    public int numCoin { get; set; } 
 }
 
 [Serializable]

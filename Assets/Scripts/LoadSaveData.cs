@@ -81,11 +81,14 @@ public class LoadSaveData : MonoBehaviour
             data.cropData.Add(cropData);
         }
 
-        CropData playerInfo = new CropData();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        playerInfo.transformData = new TransformData(player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z);
-        playerInfo.itemScriptableObject = "Player";
-        data.cropData.Add(playerInfo);
+        //CropData playerInfo = new CropData();
+        //GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //playerInfo.transformData = new TransformData(player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z);
+        //playerInfo.itemScriptableObject = "Player";
+        //data.cropData.Add(playerInfo);
+
+        data.numLive = GameSession.instance.GetLive();
+        data.numCoin = GameSession.instance.GetScore();
 
         return data;
     }
@@ -146,6 +149,7 @@ public class LoadSaveData : MonoBehaviour
 
     public void PrepareSave()
     {
+        print("PrepareSave");
         List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
         placesObjects.RemoveAt(0);
 
@@ -224,6 +228,15 @@ public class LoadSaveData : MonoBehaviour
                 {
                     instanceCoin.transform.SetParent(target.transform);
                 }
+            }
+
+            if(save.numLive > 0)
+            {
+                GameSession.instance.SetLive(save.numLive);
+            }
+            if(save.numCoin > 0)
+            {
+                GameSession.instance.SetScore(save.numCoin);
             }
         }
         else
