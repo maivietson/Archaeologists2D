@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: json
+  m_EditorClassIdentifier: 
+  m_GroupName: json
+  m_Data:
+    m_SerializedData: []
+  m_GUID: adedb4db0517a6045b8ab368c058a6da
+  m_SerializeEntries:
+  - m_GUID: 047cf0f291cec644b887a8168386e0fb
+    m_Address: DataJson/initialization.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 4900000, guid: 047cf0f291cec644b887a8168386e0fb, type: 3}
+    m_TargetAsset: {fileID: 4900000, guid: 047cf0f291cec644b887a8168386e0fb, type: 3}
+  - m_GUID: 64fe706f7a91da2438b34a3340551291
+    m_Address: DataJson/TextInGame.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 4900000, guid: 64fe706f7a91da2438b34a3340551291, type: 3}
+    m_TargetAsset: {fileID: 4900000, guid: 64fe706f7a91da2438b34a3340551291, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 480bff80bd8910c4ea95c876ebd76996, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2d2c9e740bfe2f643b60a2c9527cebc1, type: 2}
+    - {fileID: 11400000, guid: 2ce33d4e70aed1144aa3be5837119cac, type: 2}

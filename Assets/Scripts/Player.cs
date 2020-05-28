@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityStandardAssets.CrossPlatformInput;
+//using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour
 {
@@ -111,7 +111,8 @@ public class Player : MonoBehaviour
 
     private void Run()
     {
-        float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        //float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        float controlThrow = Input.GetAxis("Horizontal");
         Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigibody.velocity.y);
         myRigibody.velocity = playerVelocity;
 
@@ -129,7 +130,8 @@ public class Player : MonoBehaviour
             return;
         }
 
-        float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        //float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        float controlThrow = Input.GetAxis("Vertical");
         Vector2 climbVelocity = new Vector2(myRigibody.velocity.x, controlThrow * climbSpeed);
         myRigibody.velocity = climbVelocity;
         myRigibody.gravityScale = 0f;
@@ -144,7 +146,12 @@ public class Player : MonoBehaviour
         // if player not yet touch ground then no jump agian
         if(!myFeetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
-        if(CrossPlatformInputManager.GetButtonDown("Jump"))
+        //if(CrossPlatformInputManager.GetButtonDown("Jump"))
+        //{
+        //    Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
+        //    myRigibody.velocity += jumpVelocityToAdd;
+        //}
+        if (Input.GetButtonDown("Jump"))
         {
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigibody.velocity += jumpVelocityToAdd;

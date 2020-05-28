@@ -221,7 +221,8 @@ public class LoadSaveData : MonoBehaviour
                 print("Name: " + data.itemScriptableObject);
                 print("Position: " + data.transformData.x + ", " + data.transformData.y);
                 string prefabPath = "Assets/Prefabs/" + data.itemScriptableObject + ".prefab";
-                GameObject coin = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
+                //GameObject coin = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
+                GameObject coin = new GameObject();
                 GameObject instanceCoin = Instantiate(coin, new Vector3(data.transformData.x, data.transformData.y, data.transformData.z), Quaternion.identity) as GameObject;
                 instanceCoin.name = data.itemScriptableObject;
                 if(!data.itemScriptableObject.Contains("Player"))
