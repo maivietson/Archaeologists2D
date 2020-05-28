@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 6869e042555f1f74989cdf7d11571ccc
   m_SerializeEntries:
   - m_GUID: f74b79fe5a919b846937b5b612825476
-    m_Address: DataPrefabs/HazardOb.prefab
+    m_Address: HazardOb.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 6994532827130353150, guid: f74b79fe5a919b846937b5b612825476,

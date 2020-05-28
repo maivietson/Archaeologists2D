@@ -18,13 +18,13 @@ MonoBehaviour:
   m_GUID: adedb4db0517a6045b8ab368c058a6da
   m_SerializeEntries:
   - m_GUID: 047cf0f291cec644b887a8168386e0fb
-    m_Address: DataJson/initialization.json
+    m_Address: initialization.json
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 4900000, guid: 047cf0f291cec644b887a8168386e0fb, type: 3}
     m_TargetAsset: {fileID: 4900000, guid: 047cf0f291cec644b887a8168386e0fb, type: 3}
   - m_GUID: 64fe706f7a91da2438b34a3340551291
-    m_Address: DataJson/TextInGame.json
+    m_Address: TextInGame.json
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 4900000, guid: 64fe706f7a91da2438b34a3340551291, type: 3}

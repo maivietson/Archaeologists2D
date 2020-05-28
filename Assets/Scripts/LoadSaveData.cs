@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 public class LoadSaveData : MonoBehaviour
@@ -15,6 +17,10 @@ public class LoadSaveData : MonoBehaviour
     [SerializeField] bool firstLoad = true;
     [SerializeField] bool prepareData = false;
     [SerializeField] GameObject target;
+
+    // Load object
+    [SerializeField] private AssetReference _assetReference = null;
+    private GameObject coinObject;
 
     public static LoadSaveData instance = null;
 
@@ -34,6 +40,8 @@ public class LoadSaveData : MonoBehaviour
         {
             instance = this;
         }
+
+        coinObject = GameObject.Find("CoinInit");
     }
 
     // Start is called before the first frame update
@@ -60,12 +68,6 @@ public class LoadSaveData : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private LevelData PrepareDataSave()
     {
         List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
@@ -80,12 +82,6 @@ public class LoadSaveData : MonoBehaviour
             cropData.itemScriptableObject = t.name;
             data.cropData.Add(cropData);
         }
-
-        //CropData playerInfo = new CropData();
-        //GameObject player = GameObject.FindGameObjectWithTag("Player");
-        //playerInfo.transformData = new TransformData(player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z);
-        //playerInfo.itemScriptableObject = "Player";
-        //data.cropData.Add(playerInfo);
 
         data.numLive = GameSession.instance.GetLive();
         data.numCoin = GameSession.instance.GetScore();
@@ -200,7 +196,7 @@ public class LoadSaveData : MonoBehaviour
 
     public void LoadDataGame(string fileName)
     {
-        string filePath = "Assets/DataGame/" + fileName;
+        string filePath = Application.persistentDataPath + "/data/" + fileName;
         print(filePath);
         // handle file
         if (File.Exists(filePath))
@@ -218,12 +214,13 @@ public class LoadSaveData : MonoBehaviour
                 {
                     continue;
                 }
-                print("Name: " + data.itemScriptableObject);
-                print("Position: " + data.transformData.x + ", " + data.transformData.y);
+                Debug.Log("Name: " + data.itemScriptableObject);
+                Debug.Log("Position: " + data.transformData.x + ", " + data.transformData.y);
+#if UNITY_EDITOR
                 string prefabPath = "Assets/Prefabs/" + data.itemScriptableObject + ".prefab";
-                //GameObject coin = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
-                GameObject coin = new GameObject();
-                GameObject instanceCoin = Instantiate(coin, new Vector3(data.transformData.x, data.transformData.y, data.transformData.z), Quaternion.identity) as GameObject;
+                coinObject = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
+#endif
+                GameObject instanceCoin = Instantiate(coinObject, new Vector3(data.transformData.x, data.transformData.y, data.transformData.z), Quaternion.identity) as GameObject;
                 instanceCoin.name = data.itemScriptableObject;
                 if(!data.itemScriptableObject.Contains("Player"))
                 {

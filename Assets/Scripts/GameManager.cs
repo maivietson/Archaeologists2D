@@ -32,16 +32,25 @@ public class GameManager : MonoBehaviour
     {
         foreach(Level lv in data.listLevel)
         {
-            string filePath = Application.persistentDataPath + "/data/" + lv.nameLevel + ".save";
-            print(filePath);
-            // Create initialization data
-            LevelData save = CreateDataInitialization(lv);
+            string path = Application.persistentDataPath + "/data/";
+            if(!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            string filePath = path + lv.nameLevel + ".save";
 
-            // make file initialization data
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(filePath);
-            bf.Serialize(file, save);
-            file.Close();
+            if (!System.IO.File.Exists(filePath))
+            {
+                print(filePath);
+                // Create initialization data
+                LevelData save = CreateDataInitialization(lv);
+
+                // make file initialization data
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Create(filePath);
+                bf.Serialize(file, save);
+                file.Close();
+            }
         }
     }
 
