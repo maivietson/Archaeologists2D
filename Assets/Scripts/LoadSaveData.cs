@@ -19,7 +19,6 @@ public class LoadSaveData : MonoBehaviour
     [SerializeField] GameObject target;
 
     // Load object
-    [SerializeField] private AssetReference _assetReference = null;
     private GameObject coinObject;
 
     public static LoadSaveData instance = null;

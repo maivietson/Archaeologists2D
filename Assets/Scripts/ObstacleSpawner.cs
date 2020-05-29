@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
-
     [SerializeField]
     public float minSpawnTime;
     [SerializeField]
@@ -28,6 +27,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Start()
     {
+        obstacle = GameObject.Find("HazardObInit");
         //StartCoroutine("Spawn");
     }
 

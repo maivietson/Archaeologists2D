@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using LitJson;
+using UnityEngine.AddressableAssets;
 
 public class Texts : MonoBehaviour
 {
     // handle string json
     private string jsonString;
     private JsonData data;
+
+    // load text from addressable
+    [SerializeField] private AssetReference _addressableTextAsset = null;
 
     // instance 
     public static Texts instance;
@@ -24,8 +28,17 @@ public class Texts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        jsonString = File.ReadAllText(Application.dataPath + "/DataGame/TextInGame.json");
-        data = JsonMapper.ToObject(jsonString);
+        _addressableTextAsset.LoadAssetAsync<TextAsset>().Completed += handle =>
+        {
+            CreateDataFromJson(handle.Result.text);
+            print(handle.Result.text);
+            Addressables.Release(handle);
+        };
+    }
+
+    private void CreateDataFromJson(string textContent)
+    {
+        data = JsonMapper.ToObject(textContent);
     }
 
     public JsonData GetData()
