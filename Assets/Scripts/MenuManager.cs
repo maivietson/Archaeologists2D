@@ -40,7 +40,8 @@ public class MenuManager : MonoBehaviour
 
     private bool CheckHasSaved()
     {
-        foreach (string file in Directory.GetFiles("Assets/DataGame/"))
+        string filePath = Application.persistentDataPath + "/data/";
+        foreach (string file in Directory.GetFiles(filePath))
         {
             FileInfo fileInfo = new FileInfo(file);
             string fileName = fileInfo.Name;

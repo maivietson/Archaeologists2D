@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpSpeed = 5.0f;
     [SerializeField] float climbSpeed = 5.0f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
+
+    [SerializeField] VariableJoystick variableJoystick;
+
     [SerializeField] GameObject panelNPCs;
     [SerializeField] Text txtNPCs;
 
@@ -47,9 +50,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         if(!isAlive) { return; }
+        if(variableJoystick == null) { return; }
         Run();
         ClimbLadder();
-        Jump();
+        //Jump();
         Die();
         FlipSprite();
         CountTime();
@@ -111,8 +115,8 @@ public class Player : MonoBehaviour
 
     private void Run()
     {
-        float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        //float controlThrow = Input.GetAxis("Horizontal");
+        //float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        float controlThrow = variableJoystick.Horizontal;
         Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigibody.velocity.y);
         myRigibody.velocity = playerVelocity;
 
@@ -130,8 +134,8 @@ public class Player : MonoBehaviour
             return;
         }
 
-        float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        //float controlThrow = Input.GetAxis("Vertical");
+        //float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        float controlThrow = variableJoystick.Vertical;
         Vector2 climbVelocity = new Vector2(myRigibody.velocity.x, controlThrow * climbSpeed);
         myRigibody.velocity = climbVelocity;
         myRigibody.gravityScale = 0f;
@@ -141,16 +145,16 @@ public class Player : MonoBehaviour
         myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
     }
 
-    private void Jump()
+    public void Jump()
     {
         // if player not yet touch ground then no jump agian
         if(!myFeetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
-        if (CrossPlatformInputManager.GetButtonDown("Jump"))
-        {
+        //if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        //{
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigibody.velocity += jumpVelocityToAdd;
-        }
+        //}
         //if (Input.GetButtonDown("Jump"))
         //{
         //    Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);

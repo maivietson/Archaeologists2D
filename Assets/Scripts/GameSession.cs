@@ -169,7 +169,8 @@ public class GameSession : MonoBehaviour
     public void SaveGame()
     {
         print("Save Game");
-        foreach (string file in Directory.GetFiles("Assets/DataGame/"))
+        string filePath = Application.persistentDataPath + "/data/";
+        foreach (string file in Directory.GetFiles(filePath))
         {
             FileInfo fileInfo = new FileInfo(file);
             string fileName = fileInfo.Name;

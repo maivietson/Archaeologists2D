@@ -25,15 +25,15 @@ public class LoadSaveData : MonoBehaviour
 
     private void Awake()
     {
-        int numLoadSaveData = FindObjectsOfType<LoadSaveData>().Length;
-        if(numLoadSaveData > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        //int numLoadSaveData = FindObjectsOfType<LoadSaveData>().Length;
+        //if(numLoadSaveData > 1)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
+        //    DontDestroyOnLoad(gameObject);
+        //}
 
         if(instance == null)
         {
@@ -56,12 +56,12 @@ public class LoadSaveData : MonoBehaviour
         {
             if (GameSession.IsLoadData)
             {
-                print(CrossParameter.FileDataLoaded);
+                //print("IsLoadData: " + CrossParameter.FileDataLoaded);
                 LoadScene(CrossParameter.FileDataLoaded);
             }
             else
             {
-                print(CrossParameter.FileDataLoaded);
+                //print("NoLoadData: " + CrossParameter.FileDataLoaded);
                 GameSession.IsLoadData = true;
             }
         }
@@ -88,47 +88,43 @@ public class LoadSaveData : MonoBehaviour
         return data;
     }
 
-    private LevelData CreateSaveGameObject()
-    {
-        List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
-        placesObjects.RemoveAt(0);
+    //private LevelData CreateSaveGameObject()
+    //{
+    //    List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
+    //    placesObjects.RemoveAt(0);
 
-        LevelData data = new LevelData();
+    //    LevelData data = new LevelData();
 
-        foreach(Transform t in placesObjects)
-        {
-            CropData cropData = new CropData();
-            cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y, t.localPosition.z);
-            cropData.itemScriptableObject = t.name;
-            //print("Name of object: " + t.name);
-            //print("Position: " + t.localPosition);
-            data.cropData.Add(cropData);
-        }
+    //    foreach(Transform t in placesObjects)
+    //    {
+    //        CropData cropData = new CropData();
+    //        cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y, t.localPosition.z);
+    //        cropData.itemScriptableObject = t.name;
+    //        data.cropData.Add(cropData);
+    //    }
 
-        Transform portExit = GameObject.Find("Level Exit").transform;
-        CropData playerInfo = new CropData();
-        //print("Name of object: " + portExit.name);
-        //print("Position: " + portExit.localPosition);
-        playerInfo.transformData = new TransformData(portExit.localPosition.x - 1.0f, portExit.localPosition.y, portExit.localPosition.z);
-        playerInfo.itemScriptableObject = "Player";
-        data.cropData.Add(playerInfo);
+    //    Transform portExit = GameObject.Find("Level Exit").transform;
+    //    CropData playerInfo = new CropData();
+    //    playerInfo.transformData = new TransformData(portExit.localPosition.x - 1.0f, portExit.localPosition.y, portExit.localPosition.z);
+    //    playerInfo.itemScriptableObject = "Player";
+    //    data.cropData.Add(playerInfo);
 
-        return data;
-    }
+    //    return data;
+    //}
 
-    public void SaveGame()
-    {
-        // create save
-        LevelData save = CreateSaveGameObject();
+    //public void SaveGame()
+    //{
+    //    // create save
+    //    LevelData save = CreateSaveGameObject();
 
-        // binary data
-        BinaryFormatter bf = new BinaryFormatter();
-        string fileName = "level" + currentSceneIndex + "_played.save";
-        string filePath = "Assets/DataGame/" + fileName;
-        FileStream file = File.Create(filePath);
-        bf.Serialize(file, save);
-        file.Close();
-    }
+    //    // binary data
+    //    BinaryFormatter bf = new BinaryFormatter();
+    //    string fileName = "level" + currentSceneIndex + "_played.save";
+    //    string filePath = "Assets/DataGame/" + fileName;
+    //    FileStream file = File.Create(filePath);
+    //    bf.Serialize(file, save);
+    //    file.Close();
+    //}
 
     public void SaveDataGame()
     {
@@ -136,7 +132,7 @@ public class LoadSaveData : MonoBehaviour
         // binary data
         BinaryFormatter bf = new BinaryFormatter();
         string fileName = "level" + currentSceneIndex + "_saved.save";
-        string filePath = "Assets/DataGame/" + fileName;
+        string filePath = Application.persistentDataPath + "/data/" + fileName;
         FileStream file = File.Create(filePath);
         bf.Serialize(file, save);
         file.Close();
@@ -144,7 +140,6 @@ public class LoadSaveData : MonoBehaviour
 
     public void PrepareSave()
     {
-        print("PrepareSave");
         List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
         placesObjects.RemoveAt(0);
 
@@ -159,8 +154,6 @@ public class LoadSaveData : MonoBehaviour
             CropData cropData = new CropData();
             cropData.transformData = new TransformData(t.localPosition.x, t.localPosition.y, t.localPosition.z);
             cropData.itemScriptableObject = t.name;
-            //print("Name of object: " + t.name);
-            //print("Position: " + t.localPosition);
             data.cropData.Add(cropData);
         }
 
@@ -183,7 +176,6 @@ public class LoadSaveData : MonoBehaviour
         else
         {
             string fileName = "level" + currentSceneIndex + "_played.save";
-            print(fileName);
             LoadDataGame(fileName);
         }
     }
@@ -196,7 +188,6 @@ public class LoadSaveData : MonoBehaviour
     public void LoadDataGame(string fileName)
     {
         string filePath = Application.persistentDataPath + "/data/" + fileName;
-        print(filePath);
         // handle file
         if (File.Exists(filePath))
         {
@@ -213,8 +204,8 @@ public class LoadSaveData : MonoBehaviour
                 {
                     continue;
                 }
-                Debug.Log("Name: " + data.itemScriptableObject);
-                Debug.Log("Position: " + data.transformData.x + ", " + data.transformData.y);
+                //Debug.Log("Name: " + data.itemScriptableObject);
+                //Debug.Log("Position: " + data.transformData.x + ", " + data.transformData.y);
 #if UNITY_EDITOR
                 string prefabPath = "Assets/Prefabs/" + data.itemScriptableObject + ".prefab";
                 coinObject = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
