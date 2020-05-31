@@ -31,7 +31,6 @@ public class Texts : MonoBehaviour
         _addressableTextAsset.LoadAssetAsync<TextAsset>().Completed += handle =>
         {
             CreateDataFromJson(handle.Result.text);
-            print(handle.Result.text);
             Addressables.Release(handle);
         };
     }
@@ -39,6 +38,7 @@ public class Texts : MonoBehaviour
     private void CreateDataFromJson(string textContent)
     {
         data = JsonMapper.ToObject(textContent);
+        ControlPanel.instance.ToolTip("");
     }
 
     public JsonData GetData()

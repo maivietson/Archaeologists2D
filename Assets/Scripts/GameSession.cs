@@ -16,24 +16,8 @@ public class GameSession : MonoBehaviour
     [SerializeField] Text livesText;
     [SerializeField] Text scoreText;
 
-    // sound
-    [SerializeField] Image soundOff;
-
-    // tooltip
-    [SerializeField] GameObject panelTooltip;
-    [SerializeField] Text contentTooltip;
-
-    // settings
-    [SerializeField] GameObject panelSettings;
-
     public static GameSession instance;
     public static bool IsLoadData { get; set; }
-
-    public bool isSoundOff = false;
-    public bool isTooltip = false;
-    public bool isSettings = false;
-
-    private int currentSceneIndex;
 
     private void Awake()
     {
@@ -135,60 +119,5 @@ public class GameSession : MonoBehaviour
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
         livesText.text = playerLives.ToString();
-    }
-
-    public void ToolTip()
-    {
-        isTooltip = !isTooltip;
-        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        contentTooltip.text = Texts.instance.GetText(Types.TextsID.ID_TOOLTIP, currentSceneIndex);
-        panelTooltip.SetActive(isTooltip);
-        StartCoroutine("DelayTime");
-    }
-
-    IEnumerator DelayTime()
-    {
-        yield return new WaitForSeconds(5);
-        panelTooltip.SetActive(false);
-        isTooltip = false;
-    }
-
-    public void Sound()
-    {
-        print("press");
-        isSoundOff = !isSoundOff;
-        soundOff.enabled = isSoundOff;
-    }
-
-    public void Settings()
-    {
-        isSettings = !isSettings;
-        panelSettings.SetActive(isSettings);
-    }
-
-    public void SaveGame()
-    {
-        print("Save Game");
-        string filePath = Application.persistentDataPath + "/data/";
-        foreach (string file in Directory.GetFiles(filePath))
-        {
-            FileInfo fileInfo = new FileInfo(file);
-            string fileName = fileInfo.Name;
-            if(fileName.Contains("_saved"))
-            {
-                File.Delete(file);
-            } 
-        }
-        LoadSaveData.instance.SaveDataGame();
-    }
-
-    public void QuitGame()
-    {
-        print("Quit Game");
-        #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-        #else
-                 Application.Quit();
-        #endif
     }
 }

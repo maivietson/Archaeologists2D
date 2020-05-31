@@ -52030,8 +52030,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 3550333828373272509, guid: 9f76fdbf2d54f6546a5f2eff2a690928,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2035553454}
+    - target: {fileID: 3550333828373272509, guid: 9f76fdbf2d54f6546a5f2eff2a690928,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Jump
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f76fdbf2d54f6546a5f2eff2a690928, type: 3}
+--- !u!114 &613954103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 331354344865511119, guid: 9f76fdbf2d54f6546a5f2eff2a690928,
+    type: 3}
+  m_PrefabInstance: {fileID: 613954102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &614163856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55437,12 +55459,12 @@ PrefabInstance:
     - target: {fileID: 3546567804800030271, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.98757
+      value: 72.85872
       objectReference: {fileID: 0}
     - target: {fileID: 3546567804800030271, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8893757
+      value: 4.884629
       objectReference: {fileID: 0}
     - target: {fileID: 3546567804800030271, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
@@ -67194,6 +67216,10 @@ PrefabInstance:
       propertyPath: txtNPCs
       value: 
       objectReference: {fileID: 857736846}
+    - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
+      propertyPath: variableJoystick
+      value: 
+      objectReference: {fileID: 613954103}
     - target: {fileID: 1907085785711399425, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
       propertyPath: m_Name

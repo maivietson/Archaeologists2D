@@ -63,8 +63,9 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "SpawnStart" && !isStartCollider)
         {
-            txtNPCs.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_START_COLLIDER_TRAPS);
-            panelNPCs.SetActive(true);
+            ControlPanel.instance.ToolTip(Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_START_COLLIDER_TRAPS));
+            //txtNPCs.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_START_COLLIDER_TRAPS);
+            //panelNPCs.SetActive(true);
             ObstacleSpawner[] gameObjects = FindObjectsOfType<ObstacleSpawner>();
             //print("collision");
             isStartCollider = true;
@@ -78,8 +79,7 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.tag == "SpawnEnd" && !isEndCollider)
         {
-            txtNPCs.text = Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_END_COLLIDER_TRAPS);
-            panelNPCs.SetActive(true);
+            ControlPanel.instance.ToolTip(Texts.instance.GetText(Types.NPCs.Type, Types.NPCs.ID.STR_END_COLLIDER_TRAPS));
             ObstacleSpawner[] gameObjects = FindObjectsOfType<ObstacleSpawner>();
             isStartCollider = false;
             isEndCollider = true;

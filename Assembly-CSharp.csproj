@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\ChestConvert.cs" />
     <Compile Include="Assets\Scripts\CoinPickup.cs" />
     <Compile Include="Assets\Scripts\ControlCollider.cs" />
+    <Compile Include="Assets\Scripts\ControlPanel.cs" />
     <Compile Include="Assets\Scripts\CrossParameter.cs" />
     <Compile Include="Assets\Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />

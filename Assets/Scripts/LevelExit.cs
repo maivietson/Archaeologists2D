@@ -13,7 +13,7 @@ public class LevelExit : MonoBehaviour
     {
         // save data before next level
         //GameSession.instance.SaveGame();
-        FindObjectOfType<GameSession>().SaveGame();
+        FindObjectOfType<ControlPanel>().SaveGame();
         StartCoroutine(LoadNextLevel());
     }
 
