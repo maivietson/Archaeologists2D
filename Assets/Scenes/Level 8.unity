@@ -122622,12 +122622,12 @@ PrefabInstance:
     - target: {fileID: 3546567804800030271, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.783981
+      value: -14.846397
       objectReference: {fileID: 0}
     - target: {fileID: 3546567804800030271, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19677134
+      value: -0.18719216
       objectReference: {fileID: 0}
     - target: {fileID: 3546567804855619220, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
@@ -135768,18 +135768,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f76fdbf2d54f6546a5f2eff2a690928, type: 3}
---- !u!114 &1541926731 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 331354344865511119, guid: 9f76fdbf2d54f6546a5f2eff2a690928,
-    type: 3}
-  m_PrefabInstance: {fileID: 1541926730}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1545057688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146057,7 +146045,7 @@ PrefabInstance:
     - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
       propertyPath: variableJoystick
       value: 
-      objectReference: {fileID: 1541926731}
+      objectReference: {fileID: 0}
     - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
       propertyPath: panelNPCs
       value: 
@@ -146066,6 +146054,14 @@ PrefabInstance:
       propertyPath: txtNPCs
       value: 
       objectReference: {fileID: 393740401}
+    - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
+      propertyPath: runSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
+      propertyPath: climbSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1907085785711399425, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
       propertyPath: m_Name

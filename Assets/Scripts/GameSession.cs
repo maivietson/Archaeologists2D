@@ -109,8 +109,23 @@ public class GameSession : MonoBehaviour
 
     private void ResetGameSession()
     {
+        CleanSave();
         SceneManager.LoadScene(0);
         Destroy(gameObject);
+    }
+
+    private void CleanSave()
+    {
+        string filePath = Application.persistentDataPath + "/data/";
+        foreach (string file in Directory.GetFiles(filePath))
+        {
+            FileInfo fileInfo = new FileInfo(file);
+            string fileName = fileInfo.Name;
+            if (fileName.Contains("_saved"))
+            {
+                File.Delete(file);
+            }
+        }
     }
 
     private void TakeLife()

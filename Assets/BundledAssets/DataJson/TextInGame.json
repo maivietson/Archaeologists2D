@@ -11,7 +11,7 @@
     "STR_BE_CAREFUL_OBSTACLE": "You have activated the trap, be careful on your head !!!"
   },
   "TOOLTIP": {
-  	"TOOLTIP_LEVEL_0": "",
+  	"TOOLTIP_LEVEL_0": "Welcome to the quest for precious diamonds. You must pass the challenge door to come to the final reward. Watch out for obstacles along the way, collect gold and find chests along the way to increase your chances of survival. Good luck !!!",
   	"TOOLTIP_LEVEL_1": "Collect as many coins as possible to use the next map !!",
   	"TOOLTIP_LEVEL_2": "Collect as many coins as possible to use the next map !!",
   	"TOOLTIP_LEVEL_3": "Collect as many coins as possible to use the next map !!",

@@ -13141,16 +13141,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 3550333826519491751, guid: 9f76fdbf2d54f6546a5f2eff2a690928,
-        type: 3}
-      propertyPath: m_TargetDisplay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3550333826519491751, guid: 9f76fdbf2d54f6546a5f2eff2a690928,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3550333828373272509, guid: 9f76fdbf2d54f6546a5f2eff2a690928,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -13158,18 +13148,6 @@ PrefabInstance:
       objectReference: {fileID: 1907085784172273812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f76fdbf2d54f6546a5f2eff2a690928, type: 3}
---- !u!114 &678353293 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 331354344865511119, guid: 9f76fdbf2d54f6546a5f2eff2a690928,
-    type: 3}
-  m_PrefabInstance: {fileID: 678353292}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &727914327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13702,12 +13680,12 @@ PrefabInstance:
     - target: {fileID: 3546567804800030271, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.905695
+      value: 29.584574
       objectReference: {fileID: 0}
     - target: {fileID: 3546567804800030271, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5444632
+      value: 3.5464272
       objectReference: {fileID: 0}
     - target: {fileID: 3546567804800030271, guid: 0a362eda68c4b5d4badcd14d0a6f0bc4,
         type: 3}
@@ -16189,7 +16167,15 @@ PrefabInstance:
     - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
       propertyPath: variableJoystick
       value: 
-      objectReference: {fileID: 678353293}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
+      propertyPath: runSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788491004, guid: cf17e56f5f5517848a346ee728b6757d, type: 3}
+      propertyPath: climbSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1907085785711399425, guid: cf17e56f5f5517848a346ee728b6757d,
         type: 3}
       propertyPath: m_Name

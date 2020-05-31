@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] float climbSpeed = 5.0f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
-    [SerializeField] VariableJoystick variableJoystick;
+    //[SerializeField] VariableJoystick variableJoystick;
 
     [SerializeField] GameObject panelNPCs;
     [SerializeField] Text txtNPCs;
@@ -50,10 +50,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         if(!isAlive) { return; }
-        if(variableJoystick == null) { return; }
+        //if(variableJoystick == null) { return; }
         Run();
         ClimbLadder();
-        //Jump();
+        Jump();
         Die();
         FlipSprite();
         CountTime();
@@ -115,9 +115,11 @@ public class Player : MonoBehaviour
 
     private void Run()
     {
-        //float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        float controlThrow = variableJoystick.Horizontal;
-        Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigibody.velocity.y);
+        float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        float move = controlThrow * runSpeed;
+        float movement = Mathf.Clamp(move, -5.0f, 5.0f);
+        //float controlThrow = variableJoystick.Horizontal;
+        Vector2 playerVelocity = new Vector2(movement, myRigibody.velocity.y);
         myRigibody.velocity = playerVelocity;
 
         // enable animation run
@@ -134,9 +136,11 @@ public class Player : MonoBehaviour
             return;
         }
 
-        //float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        float controlThrow = variableJoystick.Vertical;
-        Vector2 climbVelocity = new Vector2(myRigibody.velocity.x, controlThrow * climbSpeed);
+        float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        //float controlThrow = variableJoystick.Vertical;
+        float move = controlThrow * climbSpeed;
+        float movement = Mathf.Clamp(move, -5.0f, 5.0f);
+        Vector2 climbVelocity = new Vector2(myRigibody.velocity.x, movement);
         myRigibody.velocity = climbVelocity;
         myRigibody.gravityScale = 0f;
 
@@ -150,11 +154,11 @@ public class Player : MonoBehaviour
         // if player not yet touch ground then no jump agian
         if(!myFeetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
-        //if (CrossPlatformInputManager.GetButtonDown("Jump"))
-        //{
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        {
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigibody.velocity += jumpVelocityToAdd;
-        //}
+        }
         //if (Input.GetButtonDown("Jump"))
         //{
         //    Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
