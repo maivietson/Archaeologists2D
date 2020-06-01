@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
 
             if (!System.IO.File.Exists(filePath))
             {
-                print(filePath);
                 // Create initialization data
                 LevelData save = CreateDataInitialization(lv);
 

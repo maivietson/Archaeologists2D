@@ -9,6 +9,8 @@ TagManager:
   - SpawnEnd
   - GateStart
   - PointStart
+  - Fire
+  - WeakEnemy
   layers:
   - Default
   - TransparentFX

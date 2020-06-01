@@ -83,6 +83,8 @@ public class ControlPanel : MonoBehaviour
             }
         }
         LoadSaveData.instance.SaveDataGame();
+        isSettings = false;
+        panelSettings.SetActive(isSettings);
     }
 
     public void QuitGame()
