@@ -67,7 +67,7 @@ public class LoadSaveData : MonoBehaviour
         }
     }
 
-    private LevelData PrepareDataSave()
+    private LevelData PrepareDataSave(int live)
     {
         List<Transform> placesObjects = target.transform.GetComponentsInChildren<Transform>().ToList();
         placesObjects.RemoveAt(0);
@@ -82,7 +82,14 @@ public class LoadSaveData : MonoBehaviour
             data.cropData.Add(cropData);
         }
 
-        data.numLive = GameSession.instance.GetLive();
+        if(live > 0)
+        {
+            data.numLive = live;
+        }
+        else
+        {
+            data.numLive = GameSession.instance.GetLive();
+        }
         data.numCoin = GameSession.instance.GetScore();
 
         return data;
@@ -128,7 +135,19 @@ public class LoadSaveData : MonoBehaviour
 
     public void SaveDataGame()
     {
-        LevelData save = PrepareDataSave();
+        LevelData save = PrepareDataSave(0);
+        // binary data
+        BinaryFormatter bf = new BinaryFormatter();
+        string fileName = "level" + currentSceneIndex + "_saved.save";
+        string filePath = Application.persistentDataPath + "/data/" + fileName;
+        FileStream file = File.Create(filePath);
+        bf.Serialize(file, save);
+        file.Close();
+    }
+
+    public void SaveDataGame(int live)
+    {
+        LevelData save = PrepareDataSave(live);
         // binary data
         BinaryFormatter bf = new BinaryFormatter();
         string fileName = "level" + currentSceneIndex + "_saved.save";

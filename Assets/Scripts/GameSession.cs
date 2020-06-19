@@ -75,7 +75,9 @@ public class GameSession : MonoBehaviour
         else
         {
             IsLoadData = true;
-            ResetGameSession();
+            ControlPanel.instance.SaveGame(1);
+            SceneManager.LoadScene(9);
+            //ResetGameSession();
         }
     }
 
@@ -107,7 +109,7 @@ public class GameSession : MonoBehaviour
         livesText.text = playerLives.ToString();
     }
 
-    private void ResetGameSession()
+    public void ResetGameSession()
     {
         CleanSave();
         SceneManager.LoadScene(0);

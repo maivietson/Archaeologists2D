@@ -87,6 +87,24 @@ public class ControlPanel : MonoBehaviour
         panelSettings.SetActive(isSettings);
     }
 
+    public void SaveGame(int live)
+    {
+        print("Save Game");
+        string filePath = Application.persistentDataPath + "/data/";
+        foreach (string file in Directory.GetFiles(filePath))
+        {
+            FileInfo fileInfo = new FileInfo(file);
+            string fileName = fileInfo.Name;
+            if (fileName.Contains("_saved"))
+            {
+                File.Delete(file);
+            }
+        }
+        LoadSaveData.instance.SaveDataGame(live);
+        isSettings = false;
+        panelSettings.SetActive(isSettings);
+    }
+
     public void QuitGame()
     {
         print("Quit Game");
