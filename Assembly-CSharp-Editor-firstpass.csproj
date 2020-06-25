@@ -272,6 +272,21 @@
     <Reference Include="LitJson">
       <HintPath>F:/Project_UnityGame/betaGame/tresure/Archaeologists2D/Assets/Libs/LitJson.dll</HintPath>
     </Reference>
+    <Reference Include="Google.IOSResolver_v1.2.156">
+      <HintPath>F:/Project_UnityGame/betaGame/tresure/Archaeologists2D/Library/PackageCache/com.google.external-dependency-manager@1.2.156/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.156.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver_v1.2.156">
+      <HintPath>F:/Project_UnityGame/betaGame/tresure/Archaeologists2D/Library/PackageCache/com.google.external-dependency-manager@1.2.156/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.156.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.PackageManagerResolver_v1.2.156">
+      <HintPath>F:/Project_UnityGame/betaGame/tresure/Archaeologists2D/Library/PackageCache/com.google.external-dependency-manager@1.2.156/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.156.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>F:/Project_UnityGame/betaGame/tresure/Archaeologists2D/Library/PackageCache/com.google.external-dependency-manager@1.2.156/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl_v1.2.156">
+      <HintPath>F:/Project_UnityGame/betaGame/tresure/Archaeologists2D/Library/PackageCache/com.google.external-dependency-manager@1.2.156/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.156.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>F:/Project_UnityGame/betaGame/tresure/Archaeologists2D/Library/PackageCache/com.unity.ads@3.4.5/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -706,6 +721,14 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{882B435B-4284-EC51-8674-3D5682F76E8B}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="GoogleMobileAds.csproj">
+      <Project>{57FC85A6-693F-0304-0CAA-9CF6D28456EA}</Project>
+      <Name>GoogleMobileAds</Name>
+    </ProjectReference>
+    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
+      <Project>{1786E37C-89D6-A43D-67C4-D941C38DEF88}</Project>
+      <Name>GoogleMobileAds.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

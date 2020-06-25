@@ -75,7 +75,7 @@ public class GameSession : MonoBehaviour
         else
         {
             IsLoadData = true;
-            ControlPanel.instance.SaveGame(1);
+            //ControlPanel.instance.SaveGame(1);
             SceneManager.LoadScene(9);
             //ResetGameSession();
         }
